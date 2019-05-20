@@ -11,7 +11,7 @@ public class MariaDataBaseConnector {
 //    private static String URL = "jdbc:mysql://localhost/work?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     //    private static String URL = "jdbc:mariadb://ikosmov.hldns.ru/work";
     private static String USER = "root";
-    private static String PASSWORD = "root";
+    private static String PASSWORD = "bus-ticket";
 
     public static Connection getConnection() {
         Connection connection;

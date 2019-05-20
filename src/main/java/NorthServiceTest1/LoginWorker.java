@@ -17,7 +17,14 @@ public class LoginWorker {
     public String signIn(@HeaderParam("login")String l,@HeaderParam("password")String p)
     {
         try {
-            String login=URLDecoder.decode(l,"UTF-8");String pass=URLDecoder.decode(p,"UTF-8");
+            String login="";
+            String pass="";
+            if(l!=null){
+                login=URLDecoder.decode(l,"UTF-8");
+            }
+            if(p!=null){
+                pass=URLDecoder.decode(p,"UTF-8");
+            }
             if(isInDb(login,pass)>0){
                 return "succ";
             }else return "fail";
@@ -43,9 +50,18 @@ public class LoginWorker {
         return "";
     }
     public static int isInDb(String login,String pass){
+        int y=0;
         Connection connection= MariaDataBaseConnector.getConnection();
         try {
             if(!connection.isClosed()){
+                connection.prepareStatement("create table if not  exists users\n" +
+                        "(\n" +
+                        "\tid int auto_increment,\n" +
+                        "\tlogin varchar(45) not null,\n" +
+                        "\tpassword varchar(45) not null,\n" +
+                        "\tconstraint users_pk\n" +
+                        "\t\tprimary key (id)\n" +
+                        ");").execute();
                 PreparedStatement p=connection.prepareStatement("SELECT * FROM users WHERE login=? and password=?");
                 p.setString(1,login);
                 p.setString(2,pass);
