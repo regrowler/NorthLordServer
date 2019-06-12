@@ -122,6 +122,7 @@ public class CarsWorker {
 
     public static String getCars(String login) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initCarsTable(connection);
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM cars WHERE owner=?");
             p.setString(1, login);
@@ -163,6 +164,7 @@ public class CarsWorker {
 
     public static String getCarById(int id) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initCarsTable(connection);
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * from cars where id=?");
             p.setInt(1, id);
@@ -185,6 +187,7 @@ public class CarsWorker {
 
     public static int delete(JSONArray array) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initCarsTable(connection);
         try {
             StringBuilder builder = new StringBuilder();
             builder.append("update cars set vis=0 where id in(");
@@ -212,6 +215,7 @@ public class CarsWorker {
 
     public static int add(String login, String label, String model, int cost, int rent) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initCarsTable(connection);
         try {
             PreparedStatement p = connection.prepareStatement("insert into cars (owner,label,model,cost,rentcost,vis) values(?,?,?,?,?,?);");
             p.setString(1, login);
@@ -229,9 +233,29 @@ public class CarsWorker {
         }
         return -1;
     }
+    public static void initCarsTable(Connection connection){
+        try {
+            connection.prepareStatement("create table if not exists cars\n" +
+                    "(\n" +
+                    "\tid int auto_increment,\n" +
+                    "\towner varchar(45) not null,\n" +
+                    "\tlabel varchar(45) not null,\n" +
+                    "\tmodel varchar(45) not null,\n" +
+                    "\tcost int not null,\n" +
+                    "\trentcost int not null,\n" +
+                    "\tvis int null,\n" +
+                    "\tconstraint cars_pk\n" +
+                    "\t\tprimary key (id)\n" +
+                    ");\n" +
+                    "\n").execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+    }
     public static int update(String label, String model, int cost, int rent, int id) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initCarsTable(connection);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update cars set label=?,model=?,cost=?,rentcost=? where id=?");
             preparedStatement.setString(1, label);

@@ -30,6 +30,9 @@ public class App
         ServletHolder log=context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/log");
         log.setInitParameter("jersey.config.server.provider.classnames",
                 LoginWorker.class.getCanonicalName());
+        ServletHolder pic=context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/pic");
+        pic.setInitParameter("jersey.config.server.provider.classnames",
+                PictureWorker.class.getCanonicalName());
         ServletHolder profile=context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/profile");
         profile.setInitParameter("jersey.config.server.provider.classnames",
                 ProfileWorker.class.getCanonicalName());

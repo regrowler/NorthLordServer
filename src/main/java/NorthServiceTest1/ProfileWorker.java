@@ -52,8 +52,28 @@ public class ProfileWorker {
         }
         return "fail";
     }
+    public static void userInfoInit(Connection connection){
+        try {
+            connection.prepareStatement("create table if not exists userinfo\n" +
+                    "(\n" +
+                    "\tid int auto_increment,\n" +
+                    "\tlogin varchar(45) not null,\n" +
+                    "\tname varchar(45) not null,\n" +
+                    "\tsurname varchar(45) not null,\n" +
+                    "\tprofit int not null,\n" +
+                    "\tcars int not null,\n" +
+                    "\temail varchar(45) not null,\n" +
+                    "\tconstraint userinfo_pk\n" +
+                    "\t\tprimary key (id)\n" +
+                    ");\n" +
+                    "\n").execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public static int updateUser(String name,String surname,String email,String login){
         Connection connection= MariaDataBaseConnector.getConnection();
+        userInfoInit(connection);
         int i=0;
         try {
             PreparedStatement preparedStatement=connection.prepareStatement("update userinfo set name=?,surname=?,email=? where login=?");
@@ -73,6 +93,7 @@ public class ProfileWorker {
     }
     public static String getuser(String l) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        userInfoInit(connection);
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM userinfo WHERE login=?");
             p.setString(1, l);
@@ -94,8 +115,10 @@ public class ProfileWorker {
         }
         return "fail";
     }
+
     public static void updateCarsCounterInc(String login)throws Exception{
         Connection connection= MariaDataBaseConnector.getConnection();
+        userInfoInit(connection);
         int i=0;
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM userinfo WHERE login=?");
@@ -116,6 +139,7 @@ public class ProfileWorker {
     }
     public static void updateCarsCounterDec(String login,int i)throws Exception{
         Connection connection= MariaDataBaseConnector.getConnection();
+        userInfoInit(connection);
         int j=0;
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM userinfo WHERE login=?");
@@ -136,6 +160,7 @@ public class ProfileWorker {
     }
     public static void updateMoneyCounter(String log,int i)throws Exception{
         Connection connection= MariaDataBaseConnector.getConnection();
+        userInfoInit(connection);
         int j=0;
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM userinfo WHERE login=?");

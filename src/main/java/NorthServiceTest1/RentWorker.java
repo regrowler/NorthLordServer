@@ -128,6 +128,7 @@ public class RentWorker {
 
     private static int delete(JSONArray array,String log) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initRents(connection);
         try {
             int cash=0;
             StringBuilder builder = new StringBuilder();
@@ -167,6 +168,7 @@ public class RentWorker {
 
     public static int update(String log,String sd, String st, String ed, String et, int cost, int id, String name){
         Connection connection=MariaDataBaseConnector.getConnection();
+        initRents(connection);
         try {
             PreparedStatement p1=connection.prepareStatement("select * from rents where id=?");
             p1.setInt(1,id);
@@ -191,6 +193,7 @@ public class RentWorker {
     }
     public static String getRents(String login) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initRents(connection);
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM work.rents r left outer join cars c on r.carid=c.id where r.owner=?;");
             p.setString(1, login);
@@ -245,6 +248,7 @@ public class RentWorker {
 
     public static String getRentsById(int id, String login) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initRents(connection);
         try {
             PreparedStatement p = connection.prepareStatement("SELECT * FROM rents WHERE owner=? and carid=?");
             p.setString(1, login);
@@ -286,9 +290,30 @@ public class RentWorker {
         }
         return "fail";
     }
-
+    public static void initRents(Connection connection){
+        try {
+            connection.prepareStatement("create table if not exists rents\n" +
+                    "(\n" +
+                    "\tid int auto_increment,\n" +
+                    "\towner varchar(45) not null,\n" +
+                    "\tcarid int null,\n" +
+                    "\tstartdate varchar(45) not null,\n" +
+                    "\tstarttime varchar(45) not null,\n" +
+                    "\tenddate varchar(45) null,\n" +
+                    "\tendtime varchar(45) null,\n" +
+                    "\tcost int not null,\n" +
+                    "\tname varchar(45) null,\n" +
+                    "\tconstraint rents_pk\n" +
+                    "\t\tprimary key (id)\n" +
+                    ");\n" +
+                    "\n").execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public static int addRent(String log, String sd, String st, String ed, String et, int cost, int id, String name) {
         Connection connection = MariaDataBaseConnector.getConnection();
+        initRents(connection);
         try {
             PreparedStatement p = connection.prepareStatement("insert into rents (owner,carid,startdate,starttime,enddate,endtime,cost,name) values (?,?,?,?,?,?,?,?);");
             p.setString(1, log);
