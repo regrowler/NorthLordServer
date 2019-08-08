@@ -21,9 +21,9 @@ public class ProfileWorker {
     public static String getUserInfo(@HeaderParam("login") String l, @HeaderParam("password") String p) {
         try {
             String login=URLDecoder.decode(l,"UTF-8");String pass=URLDecoder.decode(p,"UTF-8");
-            if(LoginWorker.isInDb(login,pass)>0){
+            if(LoginWorker.isInDb(l,p)>0){
                 String res=getuser(l);
-                return URLDecoder.decode(res,"UTF-8");
+                return res;
             }
         }catch (Exception e){
             System.err.println(e.getMessage());
@@ -43,9 +43,15 @@ public class ProfileWorker {
             String n=URLDecoder.decode(name,"UTF-8");String s=URLDecoder.decode(surname,"UTF-8");
             String em=URLDecoder.decode(email,"UTF-8");
             if(LoginWorker.isInDb(login,pass)>0){
-                if(updateUser(n,s,em,login)==0){
-                    return "succ";
-                }else return "fail";
+                if(updateUser(name,surname,email,login)==0){
+                    JSONObject object=new JSONObject();
+                    object.put("result","success");
+                    return object.toString();
+                }else {
+                    JSONObject object=new JSONObject();
+                    object.put("result","fail");
+                    return object.toString();
+                }
             }
         }catch (Exception e){
             System.err.println(e.toString());
@@ -57,12 +63,12 @@ public class ProfileWorker {
             connection.prepareStatement("create table if not exists userinfo\n" +
                     "(\n" +
                     "\tid int auto_increment,\n" +
-                    "\tlogin varchar(45) not null,\n" +
-                    "\tname varchar(45) not null,\n" +
-                    "\tsurname varchar(45) not null,\n" +
+                    "\tlogin varchar(200) not null,\n" +
+                    "\tname varchar(200) not null,\n" +
+                    "\tsurname varchar(200) not null,\n" +
                     "\tprofit int not null,\n" +
                     "\tcars int not null,\n" +
-                    "\temail varchar(45) not null,\n" +
+                    "\temail varchar(200) not null,\n" +
                     "\tconstraint userinfo_pk\n" +
                     "\t\tprimary key (id)\n" +
                     ");\n" +
@@ -105,11 +111,15 @@ public class ProfileWorker {
                 jsonObject.put("profit", rs.getInt(5));
                 jsonObject.put("cars", rs.getInt(6));
                 jsonObject.put("email", URLEncoder.encode(rs.getString(7), "UTF-8"));
+                jsonObject.put("result","success");
                 connection.close();
+                System.err.println(jsonObject.toString());
                 return jsonObject.toString();
             }
             connection.close();
-            return "fail";
+            JSONObject object=new JSONObject();
+            object.put("result","fail");
+            return object.toString();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

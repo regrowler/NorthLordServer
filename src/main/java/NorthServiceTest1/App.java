@@ -8,6 +8,10 @@ import org.eclipse.jetty.util.component.AbstractLifeCycle;
 import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
 
+import java.util.Scanner;
+
+import static java.lang.System.in;
+
 /**
  * Hello world!
  *
@@ -17,6 +21,8 @@ public class App
     public static void main( String[] args )
     {
         System.err.println("asd1");
+        //ServerThread thread=new ServerThread();
+       // thread.run();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
 
@@ -45,11 +51,18 @@ public class App
 
         try {
             jettyServer.start();
-            jettyServer.join();
+            // jettyServer.join();
         } catch (Exception e){
             e.printStackTrace();
         }finally {
-            jettyServer.destroy();
+          //  jettyServer.destroy();
+        }
+        Scanner scanner=new Scanner(in);
+        while (true){
+            System.err.println(scanner.next());
+            if(scanner.next().equals("stop")){
+                jettyServer.destroy();
+            }
         }
     }
 }

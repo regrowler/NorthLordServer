@@ -27,21 +27,27 @@ public class RentWorker {
                                  @FormParam("id") String i,
                                  @FormParam("name") String n) {
         try {
-            String login = URLDecoder.decode(log, "UTF-8");
-            String pass = URLDecoder.decode(pas, "UTF-8");
+            String login = URLEncoder.encode(log, "UTF-8");
+            String pass = URLEncoder.encode(pas, "UTF-8");
             String startd = URLDecoder.decode(sd, "UTF-8");
             String startt = URLDecoder.decode(st, "UTF-8");
             String endd = URLDecoder.decode(ed, "UTF-8");
             String endt = URLDecoder.decode(et, "UTF-8");
             String costs = URLDecoder.decode(c, "UTF-8");
-            String name = URLDecoder.decode(n, "UTF-8");
+            String name = URLEncoder.encode(n, "UTF-8");
             String ids = URLDecoder.decode(i, "UTF-8");
             int cost = Integer.parseInt(costs);
             int id = Integer.parseInt(ids);
             if (LoginWorker.isInDb(login, pass) > 0) {
                 if (addRent(login, startd, startt, endd, endt, cost, id, name) == 0) {
-                    return "succ";
-                } else return "fail";
+                    JSONObject object1=new JSONObject();
+                    object1.put("result","success");
+                    return object1.toString();
+                } else {
+                    JSONObject object1=new JSONObject();
+                    object1.put("result","fail");
+                    return object1.toString();
+                }
             }
 
         } catch (Exception e) {
@@ -58,13 +64,13 @@ public class RentWorker {
         try {
             String login = URLDecoder.decode(log, "UTF-8");
             String pass = URLDecoder.decode(pas, "UTF-8");
-            if (LoginWorker.isInDb(login, pass) > 0) {
+            if (LoginWorker.isInDb(log, pas) > 0) {
                 if (i != null) {
                     String ids = URLDecoder.decode(i, "UTF-8");
                     int id = Integer.parseInt(ids);
-                    return getRentsById(id, login);
+                    return getRentsById(id, log);
                 } else {
-                    String s = getRents(login);
+                    String s = getRents(log);
                     return s;
                 }
             }
@@ -85,21 +91,27 @@ public class RentWorker {
                                     @FormParam("id") String i,
                                     @FormParam("name") String n){
         try {
-            String login = URLDecoder.decode(log, "UTF-8");
-            String pass = URLDecoder.decode(pas, "UTF-8");
+            String login = URLEncoder.encode(log, "UTF-8");
+            String pass = URLEncoder.encode(pas, "UTF-8");
             String startd = URLDecoder.decode(sd, "UTF-8");
             String startt = URLDecoder.decode(st, "UTF-8");
             String endd = URLDecoder.decode(ed, "UTF-8");
             String endt = URLDecoder.decode(et, "UTF-8");
             String costs = URLDecoder.decode(c, "UTF-8");
-            String name = URLDecoder.decode(n, "UTF-8");
+            String name = URLEncoder.encode(n, "UTF-8");
             String ids = URLDecoder.decode(i, "UTF-8");
             int cost = Integer.parseInt(costs);
             int id = Integer.parseInt(ids);
             if (LoginWorker.isInDb(login, pass) > 0) {
                 if (update(login, startd, startt, endd, endt, cost, id, name) == 0) {
-                    return "succ";
-                } else return "fail";
+                    JSONObject object1=new JSONObject();
+                    object1.put("result","success");
+                    return object1.toString();
+                } else {
+                    JSONObject object1=new JSONObject();
+                    object1.put("result","fail");
+                    return object1.toString();
+                }
             }
         }catch (Exception e){System.err.println(e.toString());}
         return "fail";
@@ -110,15 +122,23 @@ public class RentWorker {
                                     @HeaderParam("password") String pas,
                                     @HeaderParam("mass") String mas) {
         try {
+            System.err.println(mas);
             String login = URLDecoder.decode(log, "UTF-8");
             String pass = URLDecoder.decode(pas, "UTF-8");
             String mass = URLDecoder.decode(mas, "UTF-8");
+            System.err.println(mass);
             JSONArray jsonArray = new JSONArray(mass);
             if (LoginWorker.isInDb(login, pass) > 0) {
                 if (delete(jsonArray,login) == 0) {
                     //ProfileWorker.updateCarsCounterDec(login, -jsonArray.length());
-                    return "succ";
-                } else return "fail";
+                    JSONObject object1=new JSONObject();
+                    object1.put("result","success");
+                    return object1.toString();
+                }else {
+                    JSONObject object1=new JSONObject();
+                    object1.put("result","fail");
+                    return object1.toString();
+                }
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -141,9 +161,10 @@ public class RentWorker {
             }
             builder.delete(builder.length() - 1, builder.length() - 1);
             builder.append(");");
+            System.err.println(builder.toString());
             PreparedStatement p = connection.prepareStatement(builder.toString());
             for (int j = 0; j < array.length(); j++) {
-                JSONObject o=new JSONObject(array.getString(j));
+                JSONObject o=array.getJSONObject(j);
                 p.setInt(j + 1, o.getInt("id"));
                 cash+=o.getInt("cost");
             }
@@ -209,15 +230,17 @@ public class RentWorker {
                 object.put("starttime", rs.getString(5));
                 object.put("enddate", rs.getString(6));
                 object.put("id", rs.getInt(1));
+                object.put("carid",rs.getInt(3));
                 object.put("endtime", rs.getString(7));
                 object.put("cost", rs.getInt(8));
                 object.put("label",rs.getString(12));
                 object.put("model",rs.getString(13));
-                array.put(object.toString());
+                array.put(object);
                 while (rs.next()) {
                     object = new JSONObject();
                     object.put("name", URLEncoder.encode(rs.getString(9), "UTF-8"));
                     object.put("id", rs.getInt(1));
+                    object.put("carid",rs.getInt(3));
                     object.put("startdate", rs.getString(4));
                     object.put("starttime", rs.getString(5));
                     object.put("enddate", rs.getString(6));
@@ -225,7 +248,7 @@ public class RentWorker {
                     object.put("cost", rs.getInt(8));
                     object.put("label",rs.getString(12));
                     object.put("model",rs.getString(13));
-                    array.put(object.toString());
+                    array.put(object);
                 }
 
 //                StringBuilder s=new StringBuilder();
@@ -234,10 +257,15 @@ public class RentWorker {
 //                for(int i =0;i<array.length();i++){\
 //                }
                 connection.close();
-                return array.toString();
+                JSONObject object1=new JSONObject();
+                object1.put("result","success");
+                object1.put("rents",array);
+                return object1.toString();
             } else {
                 connection.close();
-                return "fail";
+                JSONObject object1=new JSONObject();
+                object1.put("result","fail");
+                return object1.toString();
             }
 
         } catch (Exception e) {
@@ -266,7 +294,8 @@ public class RentWorker {
                 object.put("enddate", rs.getString(6));
                 object.put("endtime", rs.getString(7));
                 object.put("cost", rs.getInt(8));
-                array.put(object.toString());
+                object.put("carid",rs.getInt(3));
+                array.put(object);
                 while (rs.next()) {
                     object = new JSONObject();
                     object.put("name", URLEncoder.encode(rs.getString(9), "UTF-8"));
@@ -276,13 +305,19 @@ public class RentWorker {
                     object.put("endtime", rs.getString(7));
                     object.put("cost", rs.getInt(8));
                     object.put("id", rs.getInt(1));
-                    array.put(object.toString());
+                    object.put("carid",rs.getInt(3));
+                    array.put(object);
                 }
                 connection.close();
-                return array.toString();
+                JSONObject object1=new JSONObject();
+                object1.put("result","success");
+                object1.put("rents",array);
+                return object1.toString();
             } else {
                 connection.close();
-                return "fail";
+                JSONObject object1=new JSONObject();
+                object1.put("result","fail");
+                return object1.toString();
             }
 
         } catch (Exception e) {
@@ -295,14 +330,14 @@ public class RentWorker {
             connection.prepareStatement("create table if not exists rents\n" +
                     "(\n" +
                     "\tid int auto_increment,\n" +
-                    "\towner varchar(45) not null,\n" +
+                    "\towner varchar(200) not null,\n" +
                     "\tcarid int null,\n" +
-                    "\tstartdate varchar(45) not null,\n" +
-                    "\tstarttime varchar(45) not null,\n" +
-                    "\tenddate varchar(45) null,\n" +
-                    "\tendtime varchar(45) null,\n" +
+                    "\tstartdate varchar(200) not null,\n" +
+                    "\tstarttime varchar(200) not null,\n" +
+                    "\tenddate varchar(200) null,\n" +
+                    "\tendtime varchar(200) null,\n" +
                     "\tcost int not null,\n" +
-                    "\tname varchar(45) null,\n" +
+                    "\tname varchar(200) null,\n" +
                     "\tconstraint rents_pk\n" +
                     "\t\tprimary key (id)\n" +
                     ");\n" +

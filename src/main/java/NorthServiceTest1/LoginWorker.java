@@ -27,9 +27,9 @@ public class LoginWorker {
                 pass = URLDecoder.decode(p, "UTF-8");
             }
             JSONObject object = new JSONObject();
-            object.put("login", login);
-            object.put("password", pass);
-            int i=isInDb(login,pass);
+            object.put("login", l);
+            object.put("password", p);
+            int i=isInDb(l,p);
             object.put("id",i);
             if (i > 0) {
                 object.put("result", "success");
@@ -51,16 +51,16 @@ public class LoginWorker {
     @Produces(MediaType.TEXT_PLAIN)
     public String signUp(@FormParam("login") String l, @FormParam("password") String p) {
         try {
-            String login = URLDecoder.decode(l, "UTF-8");
-            String pass = URLDecoder.decode(p, "UTF-8");
+            String login = URLEncoder.encode(l, "UTF-8");
+            String pass = URLEncoder.encode(p, "UTF-8");
             System.err.println(login + " " + pass + " ");
             JSONObject object = new JSONObject();
             object.put("login", login);
             object.put("password", pass);
 
-            if (isInDb(login, pass) <= 0) {
+            if (isInDb(l, p) <= 0) {
                 object.put("result", "success");
-                object.put("id",sign(login, pass));
+                object.put("id",sign(l, p));
                 return object.toString();
             } else {
 

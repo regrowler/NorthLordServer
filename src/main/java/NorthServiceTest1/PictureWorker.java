@@ -1,5 +1,6 @@
 package NorthServiceTest1;
 
+import org.json.JSONObject;
 import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
@@ -56,6 +57,9 @@ public class PictureWorker {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "";
+        JSONObject object=new JSONObject();
+        object.put("result",1);
+        System.err.println(object.toString());
+        return object.toString();
     }
 }

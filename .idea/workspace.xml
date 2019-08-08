@@ -2,26 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4142dd4-f0c5-418c-b3da-4b962cde44c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/ServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/CarsWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/CarsWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/LoginWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/LoginWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/NorthServiceTest1-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/NorthServiceTest1-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/NorthServiceTest1-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/NorthServiceTest1-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DataBase/MariaDataBaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataBase/MariaDataBaseConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NorthServiceTest1/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NorthServiceTest1/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/NorthServiceTest1/CarsWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NorthServiceTest1/CarsWorker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/NorthServiceTest1/LoginWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NorthServiceTest1/LoginWorker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NorthServiceTest1/PictureWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NorthServiceTest1/PictureWorker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/NorthServiceTest1/ProfileWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NorthServiceTest1/ProfileWorker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/NorthServiceTest1/RentWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NorthServiceTest1/RentWorker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/NorthServiceTest1.AppTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-NorthServiceTest1.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/NorthServiceTest1/AppTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+            <state relative-caret-position="437">
+              <caret line="65" column="9" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="65" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,14 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/LoginWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -63,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+            <state relative-caret-position="323">
+              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,22 +70,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/ServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+            <state relative-caret-position="136">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,10 +87,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/CarsWorker.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3995">
-              <caret line="245" column="26" selection-start-line="245" selection-start-column="26" selection-end-line="245" selection-end-column="26" />
+            <state relative-caret-position="236">
+              <caret line="128" column="35" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="96" column="48" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="901">
+              <caret line="65" column="40" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,6 +144,7 @@
     <findStrings>
       <find>LOG</find>
       <find>vis</find>
+      <find>init</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -137,13 +156,15 @@
         <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/EntryPoint.java" />
         <option value="$PROJECT_DIR$/src/assembly/some-assembly.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java" />
         <option value="$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java" />
         <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/CarsWorker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/ServerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java" />
+        <option value="$PROJECT_DIR$/src/WEB-INF/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/LoginWorker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java" />
       </list>
     </option>
   </component>
@@ -164,6 +185,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="NorthLordServer" type="58d84e3e:PackageViewProjectNode" />
+              <item name="NorthLordServer" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="NorthLordServer" type="58d84e3e:PackageViewProjectNode" />
+              <item name="NorthLordServer" type="616d4139:PackageViewModuleNode" />
+              <item name="NorthServiceTest1" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,6 +218,12 @@
               <item name="NorthLordServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="NorthLordServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NorthLordServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NorthLordServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assembly" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NorthLordServer" type="b2602c69:ProjectViewProjectNode" />
@@ -218,23 +262,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="NorthLordServer" type="58d84e3e:PackageViewProjectNode" />
-              <item name="NorthLordServer" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="NorthLordServer" type="58d84e3e:PackageViewProjectNode" />
-              <item name="NorthLordServer" type="616d4139:PackageViewModuleNode" />
-              <item name="NorthServiceTest1" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -317,16 +344,26 @@
       <workItem from="1559386409503" duration="2843000" />
       <workItem from="1559922440672" duration="6613000" />
       <workItem from="1560261770936" duration="6518000" />
+      <workItem from="1560347876616" duration="11121000" />
+      <workItem from="1560456386508" duration="14153000" />
+      <workItem from="1560747550526" duration="7336000" />
+      <workItem from="1560790846072" duration="633000" />
+      <workItem from="1560935424967" duration="1501000" />
+      <workItem from="1561533514394" duration="1221000" />
+      <workItem from="1561986787296" duration="701000" />
+      <workItem from="1562861470116" duration="919000" />
+      <workItem from="1563551213199" duration="899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62103000" />
+    <option name="totallyTimeSpent" value="100587000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20469083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -336,13 +373,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3163597" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.14626218" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.22426869" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.20910075" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3129689" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -369,20 +406,6 @@
     <entry file="jar://$MAVEN_REPOSITORY$/org/mariadb/jdbc/mariadb-java-client/2.4.1/mariadb-java-client-2.4.1.jar!/org/mariadb/jdbc/MariaDbConnection.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0/javax.ws.rs-api-2.0-sources.jar!/javax/ws/rs/HeaderParam.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLDecoder.java" />
-    <entry file="file://$PROJECT_DIR$/src/assembly/some-assembly.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/EntryPoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -393,10 +416,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.7/jersey-server-2.7.jar!/org/glassfish/jersey/server/model/internal/ResourceMethodInvocationHandlerFactory.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/CarsWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-463">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="23">
+          <caret line="299" column="40" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WEB-INF/index.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/ServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -406,20 +443,20 @@
     <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/CarsWorker.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3995">
-          <caret line="245" column="26" selection-start-line="245" selection-start-column="26" selection-end-line="245" selection-end-column="26" />
+        <state relative-caret-position="170">
+          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DataBase/MariaDataBaseConnector.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/ProfileWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        <state relative-caret-position="901">
+          <caret line="65" column="40" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -428,8 +465,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/RentWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+        <state relative-caret-position="236">
+          <caret line="128" column="35" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -438,21 +475,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.7/jersey-server-2.7.jar!/org/glassfish/jersey/server/model/internal/ResourceMethodInvocationHandlerFactory.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="437">
+          <caret line="65" column="9" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="65" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -461,11 +485,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/LoginWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        <state relative-caret-position="136">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assembly/some-assembly.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NorthServiceTest1/PictureWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="96" column="48" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
         </state>
       </provider>
     </entry>

@@ -6,6 +6,9 @@ import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.Connection;
@@ -33,9 +36,15 @@ public class CarsWorker {
             int cost = Integer.parseInt(costs);
             int rent = Integer.parseInt(rents);
             if (LoginWorker.isInDb(login, pass) > 0) {
-                if (add(login, label, model, cost, rent) == 0) {
-                    return "succ";
-                } else return "fail";
+                if (add(login, la, mo, cost, rent) == 0) {
+                    JSONObject object=new JSONObject();
+                    object.put("result","success");
+                    return object.toString();
+                } else {
+                    JSONObject object=new JSONObject();
+                    object.put("result","fail");
+                    return object.toString();
+                }
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -65,8 +74,14 @@ public class CarsWorker {
             int id = Integer.parseInt(ids);
             if (LoginWorker.isInDb(login, pass) > 0) {
                 if (update(label, model, cost, rent, id) == 0) {
-                    return "succ";
-                } else return "fail";
+                    JSONObject object=new JSONObject();
+                    object.put("result","success");
+                    return object.toString();
+                } else {
+                    JSONObject object=new JSONObject();
+                    object.put("result","fail");
+                    return object.toString();
+                }
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -78,17 +93,36 @@ public class CarsWorker {
     @Produces(MediaType.TEXT_PLAIN)
     public static String deletecars(@HeaderParam("login") String log,
                                     @HeaderParam("password") String pas,
-                                    @HeaderParam("mass") String mas) {
+                                    @HeaderParam("mas") String i
+                                    ) {
         try {
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(requestBody));
+//            StringBuilder out = new StringBuilder();
+//            String line;
+//            String log="g";
+//            String pas="1";
+//            while ((line = reader.readLine()) != null) {
+//                out.append(line);
+//            }
+//            System.out.println(out.toString());   //Prints the string content read from input stream
+//            reader.close();
+//            String mas=out.toString();
+
             String login = URLDecoder.decode(log, "UTF-8");
             String pass = URLDecoder.decode(pas, "UTF-8");
-            String mass = URLDecoder.decode(mas, "UTF-8");
+            String mass = URLDecoder.decode(i, "UTF-8");
             JSONArray jsonArray = new JSONArray(mass);
             if (LoginWorker.isInDb(login, pass) > 0) {
                 if (delete(jsonArray) == 0) {
                     ProfileWorker.updateCarsCounterDec(login, jsonArray.length());
-                    return "succ";
-                } else return "fail";
+                    JSONObject object=new JSONObject();
+                    object.put("result","success");
+                    return object.toString();
+                }else {
+                    JSONObject object=new JSONObject();
+                    object.put("result","fail");
+                    return object.toString();
+                }
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -104,7 +138,8 @@ public class CarsWorker {
         try {
             String login = URLDecoder.decode(log, "UTF-8");
             String pass = URLDecoder.decode(pas, "UTF-8");
-            if (LoginWorker.isInDb(login, pass) > 0) {
+
+            if (LoginWorker.isInDb(login, pass) >0 ) {
                 if (i != null) {
                     String ids = URLDecoder.decode(i, "UTF-8");
                     int id = Integer.parseInt(ids);
@@ -113,6 +148,12 @@ public class CarsWorker {
                     String s = getCars(login);
                     return s;
                 }
+            }else {
+                JSONArray array=new JSONArray();
+                JSONObject object=new JSONObject();
+                object.put("results",array);
+                object.put("result","fail");
+                return object.toString();
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -129,6 +170,7 @@ public class CarsWorker {
             ResultSet rs = p.executeQuery();
             JSONArray array;
             JSONObject object;
+            JSONObject res=new JSONObject();
             if (rs.next()) {
                 array = new JSONArray();
                 object = new JSONObject();
@@ -139,8 +181,11 @@ public class CarsWorker {
                     object.put("model", URLEncoder.encode(rs.getString(4), "UTF-8"));
                     object.put("cost", rs.getInt(5));
                     object.put("rent", rs.getInt(6));
-                    array.put(object.toString());
+                    array.put(object);
 
+
+                }else {
+//                    res.put("result","fail");
                 }
                 while (rs.next()) {
                     if(rs.getInt(7)==1) {
@@ -150,10 +195,13 @@ public class CarsWorker {
                         object.put("model", URLEncoder.encode(rs.getString(4), "UTF-8"));
                         object.put("cost", rs.getInt(5));
                         object.put("rent", rs.getInt(6));
-                        array.put(object.toString());
+                        array.put(object);
                     }
                 }
-                return array.toString();
+                object=new JSONObject();
+                res.put("result","success");
+                res.put("results",array);
+                return res.toString();
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -175,9 +223,18 @@ public class CarsWorker {
                 jsonObject.put("model", URLEncoder.encode(rs.getString(4), "UTF-8"));
                 jsonObject.put("cost", rs.getInt(5));
                 jsonObject.put("rent", rs.getInt(6));
-                return jsonObject.toString();
+                JSONArray array=new JSONArray();
+                array.put(jsonObject);
+                JSONObject object=new JSONObject();
+                object.put("results",array);
+                object.put("result","success");
+                return object.toString();
             } else {
-                return "fail";
+                JSONArray array=new JSONArray();
+                JSONObject object=new JSONObject();
+                object.put("results",array);
+                object.put("result","fail");
+                return object.toString();
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -238,9 +295,9 @@ public class CarsWorker {
             connection.prepareStatement("create table if not exists cars\n" +
                     "(\n" +
                     "\tid int auto_increment,\n" +
-                    "\towner varchar(45) not null,\n" +
-                    "\tlabel varchar(45) not null,\n" +
-                    "\tmodel varchar(45) not null,\n" +
+                    "\towner varchar(200) not null,\n" +
+                    "\tlabel varchar(200) not null,\n" +
+                    "\tmodel varchar(200) not null,\n" +
                     "\tcost int not null,\n" +
                     "\trentcost int not null,\n" +
                     "\tvis int null,\n" +
